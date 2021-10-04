@@ -8,3 +8,4 @@ test/reports/*
 .settings
 .settings/*
 .classpath
+target/**

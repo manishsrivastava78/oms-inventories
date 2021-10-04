@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: oms-inventory
-  namespace: app
+  namespace: product-domain
   labels:
     app: oms-inventory
 spec:

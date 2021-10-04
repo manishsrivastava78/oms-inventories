@@ -89,5 +89,17 @@ public class CustomErrorHandler  extends ResponseEntityExceptionHandler implemen
 		ErrorResponse errorResponse = new ErrorResponse(new Date(), (customErrorMessage == null ? ex.getMessage():customErrorMessage), request.getDescription(false));
 		return new ResponseEntity<Object>(errorResponse, Utility.getCustomResponseHeaders(headers), httpStatus);
 	}
+	
+	/**
+	 * 
+	 * @param ex
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@ExceptionHandler(OrderNotFound.class)
+	public ResponseEntity<Object> orderNotFoundException(Exception ex, WebRequest request) throws Exception {
+		return getResponseEntity(request,HttpStatus.NOT_FOUND,ex,null);
+	}
 
 }

@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import io.swagger.annotations.ApiModel;
 
 /**
@@ -26,7 +28,9 @@ public class Inventory implements Serializable {
 	private static final long serialVersionUID = -6820844333408498994L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GenericGenerator(name = "inventory_id", strategy = "com.tcs.eas.rest.apis.utility.KeyGenerator")
+	@GeneratedValue(generator = "inventory_id") 
 	private int inventoryid;
 	
 	@Column(unique=true)

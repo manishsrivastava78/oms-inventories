@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: oms-inventory-svc
-  namespace: app
+  namespace: product-domain
   labels:
     app: oms-inventory
 spec:

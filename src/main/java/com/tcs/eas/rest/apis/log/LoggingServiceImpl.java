@@ -148,5 +148,10 @@ public class LoggingServiceImpl extends MdcLogging implements LoggingService {
 			return "{\"error\":\"payload generation issue\"}";
 		}
 	}
+	
+	@Override
+	public void logError(String errorMessage) {
+		LOGGER.error("Error: "+errorMessage,HTTP_STATUS_500);
+	}
 
 }

@@ -11,6 +11,8 @@ public interface LoggingService {
     
     void writeProcessLog(String httpMethod,String serviceName,String serviceMethod,Object object);
     
+    void logError(String errorMessage); 
+    
     void clearMDC(); 
     
 }

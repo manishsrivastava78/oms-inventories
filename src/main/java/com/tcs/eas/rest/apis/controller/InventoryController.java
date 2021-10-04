@@ -100,13 +100,16 @@ public class InventoryController {
 	 * @return
 	 */
 	@PutMapping("/inventories/{inventoryid}")
-	public ResponseEntity<Inventory> updateInventory(@PathVariable int inventoryid,@RequestHeader Map<String, String> headers) {
-		Inventory inventory = inventoryDaoService.getInventoryById(inventoryid);
+	public ResponseEntity<Inventory> updateInventory(@Valid @RequestBody Inventory inventory,@PathVariable int inventoryid,@RequestHeader Map<String, String> headers) {
+		Inventory inventoryObj = inventoryDaoService.getInventoryById(inventoryid);
 		if (inventory == null) {
 			throw new InventoryNotFound("inventoryid " + inventoryid+" does not exist");
 		}
-		loggingService.writeProcessLog("PUT", "inventories", "updateinventory by id", inventory);
-		return ResponseEntity.ok().headers(Utility.getCustomResponseHeaders(headers)).body(inventory);
+		inventoryObj.setAvailablequantity(inventory.getAvailablequantity());
+		inventoryObj.setMinquantity(inventory.getMinquantity());
+		inventoryDaoService.save(inventoryObj);
+		loggingService.writeProcessLog("PUT", "inventories", "updateinventory by id", inventoryObj);
+		return ResponseEntity.ok().headers(Utility.getCustomResponseHeaders(headers)).body(inventoryObj);
 	}
 
 	/**
