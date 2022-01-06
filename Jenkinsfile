@@ -41,7 +41,7 @@ pipeline {
                 sh script: '''
                 #!/bin/bash
                 cd $WORKSPACE/oms-inventories/
-                docker build -t manishsrivastavaggn/oms-inventories:${BUILD_NUMBER} .
+                docker build -t mybranddotcom/oms-inventories:${BUILD_NUMBER} .
                 '''
             }
         }
@@ -57,7 +57,7 @@ pipeline {
              stage('Push docker image') {
             steps{
                 sh(script: """
-                    docker push manishsrivastavaggn/oms-inventories:${BUILD_NUMBER}
+                    docker push mybranddotcom/oms-inventories:${BUILD_NUMBER}
                 """)
             }
         }
