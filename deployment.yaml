@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: oms-inventory
-        image: saini-navjotk/oms-inventories:changeMePlease
+        image: mybranddotcom/oms-inventories:changeMePlease
         ports:
         - containerPort: 8080
         
